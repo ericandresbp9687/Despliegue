@@ -1,0 +1,35 @@
+<!-- <app-progress-bar *ngIf="loading"></app-progress-bar> -->
+<!-- el progressbar todavia no está implementado, dejarlo comentado -->
+
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Ordenes</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Agregar Orden</button>
+    </div>
+
+    <table *ngIf="listOrders.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha de Orden</th>
+            <th scope="col">Total</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listOrders" class="table-active">
+            <td>{{ item.id }}</td>
+            <td>{{ item.customer.name }}</td>
+            <td>{{ item.order_date }}</td>
+            <td>$ {{ item.total_price }}</td>
+            
+            <td>
+                <!-- <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button> -->
+                <button (click)="deleteOrder(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listOrders.length == 0">No hay ordenes para mostrar</h5>
+</div>

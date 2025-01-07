@@ -1,0 +1,41 @@
+<!-- <app-progress-bar *ngIf="loading"></app-progress-bar> -->
+<!-- el progressbar todavia no está implementado, dejarlo comentado -->
+
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Productos</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Agregar Producto</button>
+    </div>
+
+    <table *ngIf="listProducts.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Descuento</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Tamaño</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listProducts" class="table-active">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>$ {{ item.price }}</td>
+            <td>{{ item.stock }}</td>
+            <td>{{ item.discount_price }}</td>
+            <td>{{ item.brand.name }}</td>
+            <td>{{ item.category.name }}</td>
+            <td>{{ item.size.size }}</td>
+            <td>
+                <!-- <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button> -->
+                <button (click)="deleteProduct(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listProducts.length == 0">No hay productos para mostrar</h5>
+</div>

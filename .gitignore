@@ -1,0 +1,15 @@
+# Ignora las dependencias de frontend y backend
+frontend/node_modules/
+backend/node_modules/
+
+# Archivos de entorno
+**/.env
+
+# Cachés y archivos temporales
+**/.cache
+**/dist
+**/coverage
+
+# Configuración de IDEs
+.vscode/
+.idea/

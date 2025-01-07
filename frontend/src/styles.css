@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globales */
+p {
+  @apply mb-0; /* Esto elimina el margen inferior de todos los párrafos */
+}

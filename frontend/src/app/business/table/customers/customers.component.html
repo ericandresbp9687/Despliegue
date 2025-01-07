@@ -1,0 +1,38 @@
+<!-- <app-progress-bar *ngIf="loading"></app-progress-bar> -->
+<!-- el progressbar todavia no está implementado, dejarlo comentado -->
+
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Clientes</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Agregar Clientes</button>
+    </div>
+
+    <table *ngIf="listCustomers.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Correo Electrónico</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Fecha de registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listCustomers" class="table-active">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.lastname }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.signin_date }}</td>
+            
+            <td>
+                <!-- <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button> -->
+                <button (click)="deleteCustomer(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listCustomers.length == 0">No hay productos para mostrar</h5>
+</div>

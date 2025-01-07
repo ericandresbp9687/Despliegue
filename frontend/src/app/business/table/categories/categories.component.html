@@ -1,0 +1,29 @@
+<!-- el progressbar todavia no está implementado, dejarlo comentado -->
+
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Categorias</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Agregar Categoría</button>
+    </div>
+
+    <table *ngIf="listCategories.length > 0" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre de la Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listCategories" class="table-active">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            
+            <td>
+                <!-- <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button> -->
+                <button (click)="deleteCategory(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="listCategories.length == 0">No hay categorias para mostrar</h5>
+</div>
